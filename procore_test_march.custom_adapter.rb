@@ -2548,6 +2548,9 @@
   elsif value.is_a?(Hash)
     result = {}
     value.each do |key, val|
+        if(key=='config')
+          return val
+        end
         result[key] = call(:deep_replace, val, old_name, new_name)
     end
     result
