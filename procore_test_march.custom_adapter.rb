@@ -2519,7 +2519,7 @@
     end,
 
     deep_replace: lambda do |value, old_name, new_name|
-
+  
   if value.is_a?(String)
 
     # 1. Replace normal string
@@ -2541,13 +2541,11 @@
     end
 
   elsif value.is_a?(Array)
-    return value if value.key?('config')
     value.map do |item|
       call(:deep_replace, item, old_name, new_name)
     end
 
   elsif value.is_a?(Hash)
-    
     result = {}
     value.each do |key, val|
         result[key] = call(:deep_replace, val, old_name, new_name)
